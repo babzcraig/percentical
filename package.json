@@ -1,21 +1,24 @@
 {
-  "name": "progress-cal",
+  "name": "percentical",
+  "description": "An app that shows the percentage of time spent in a year",
   "author": "Babs Craig <babscraig@gmail.com> (https://babscraig.com/)",
   "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "electron": "4.0.4",
     "eslint": "5.13.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-jsx-a11y": "6.2.0",
     "eslint-plugin-react": "7.12.4",
+    "prop-types": "15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.3"
+    "react-scripts": "2.1.3",
+    "styled-components": "4.1.3"
   },
   "devDependencies": {
+    "electron": "4.0.4",
     "electron-builder": "20.38.5"
   },
   "scripts": {
@@ -43,9 +46,8 @@
   ],
   "build": {
     "appId": "com.electron.electron-with-create-react-app",
-    "win": {
-      "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
-    },
+    "win": null,
+    "extends": null,
     "directories": {
       "buildResources": "public"
     }

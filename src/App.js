@@ -1,28 +1,60 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import styled from "styled-components";
+
+import getYearInfo from "./utils/getYearInfo";
+
+import { Row, ProgressBar } from "./components";
 
 class App extends Component {
+  componentDidMount() {
+    // we can set the interval here.
+  }
+
+  getPositional = number => {
+    let suffix = "th";
+    if (Number(number) === 1) suffix = "st";
+    if (Number(number) === 2) suffix = "nd";
+    if (Number(number) === 3) suffix = "rd";
+
+    return `${number}${suffix}`;
+  };
+
   render() {
+    const {
+      date,
+      month,
+      year,
+      totalDaysInYear,
+      daysGoneBy,
+      percentageOfYearCompleted,
+      percentageOfYearCompletedToString
+    } = getYearInfo();
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Start Working On Your Menu-bar Electron App
-          </a>
-        </header>
-      </div>
+      <AppEl>
+        <div>
+          <Row>
+            <p>
+              {this.getPositional(date)} of {month}, {year}
+            </p>
+          </Row>
+          <Row>
+            <p>
+              {daysGoneBy} days of {totalDaysInYear} gone
+            </p>
+          </Row>
+          <Row>
+            <ProgressBar percentage={percentageOfYearCompleted} />
+          </Row>
+          <Row>
+            <p>{percentageOfYearCompletedToString}</p>
+          </Row>
+        </div>
+      </AppEl>
     );
   }
 }
+
+const AppEl = styled.div``;
 
 export default App;
